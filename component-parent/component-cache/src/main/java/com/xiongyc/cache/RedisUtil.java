@@ -11,6 +11,7 @@ public class RedisUtil {
 	@Autowired
 	private RedisTemplate redisTemplate;
 
+	@SuppressWarnings("unchecked")
 	public Long getSeq(String tableName, long l) {
 		return redisTemplate.opsForValue().increment(tableName, l);
 	}

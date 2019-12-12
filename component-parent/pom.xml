@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance http://www.springmodules.org/schema/cache/springmodules-cache.xsd http://www.springmodules.org/schema/cache/springmodules-ehcache.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.xiongyc</groupId>
+	<groupId>com.xiongyc.component</groupId>
 	<artifactId>component-parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
@@ -22,6 +22,7 @@
 		<module>component-util</module>
 		<module>component-sequence</module>
 		<module>component-cache</module>
+		<module>component-generator</module>
 	</modules>
 
 	<dependencyManagement>
@@ -58,23 +59,28 @@
 
 			<!-- 工具组件 -->
 			<dependency>
-				<groupId>com.xiongyc</groupId>
+				<groupId>com.xiongyc.component</groupId>
 				<artifactId>component-util</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.xiongyc</groupId>
+				<groupId>com.xiongyc.component</groupId>
 				<artifactId>component-swagger</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.xiongyc</groupId>
+				<groupId>com.xiongyc.component</groupId>
 				<artifactId>component-sequence</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.xiongyc</groupId>
+				<groupId>com.xiongyc.component</groupId>
 				<artifactId>component-cache</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.xiongyc.component</groupId>
+				<artifactId>component-generator</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
