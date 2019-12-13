@@ -40,17 +40,17 @@ public class ControllerGenerator extends AbstractGenerator
 		context += "import org.springframework.web.bind.annotation.RequestBody;  \r\n";
 		context += "import org.springframework.web.bind.annotation.PostMapping;\r\n";
 		context += "\r\n\r\n\r\n";
-		context += "import com.honghu.cloud.common.utils.mybatis.Criteria;  \r\n";
-		context += "import com.honghu.cloud.common.utils.result.JsonResult;\r\n";
+		context += "import com.xiongyc.utils.mybatis.Criteria;  \r\n";
+		context += "import com.xiongyc.utils.result.JsonResult;\r\n";
 		
 		context += "import org.springframework.web.bind.annotation.RestController;\r\n";
 //		context += "import lombok.extern.slf4j.Slf4j;\r\n";
 		context += "import io.swagger.annotations.Api;\r\n";
-		context += "import com.honghu.cloud.sequence.SequenceService;\r\n";
+		context += "import com.xiongyc.sequence.service.SequenceService;\r\n";
 		context += "import io.swagger.annotations.ApiOperation;\r\n";
 		context += "import io.swagger.annotations.ApiParam;\r\n";
 		context += "import com.baomidou.mybatisplus.plugins.Page;\r\n";
-		context += "import com.honghu.cloud.common.code.AppResponseCode;\r\n";
+		context += "import com.xiongyc.utils.code.AppResponseCode;\r\n";
 		
 		context += "\r\n";
 

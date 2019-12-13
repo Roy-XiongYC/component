@@ -33,7 +33,7 @@ public class DaoGenerator extends AbstractGenerator
 		String context = table.getPackageNameTransfer(".dao");
 		context += "\r\n\r\n";
 		context += "import java.util.List;\r\n";
-		context += "import com.honghu.cloud.common.utils.mybatis.Criteria;\r\n";
+		context += "import com.xiongyc.utils.mybatis.Criteria;\r\n";
 		context += "import org.springframework.stereotype.Repository;\r\n";
 		context += "import com.baomidou.mybatisplus.plugins.pagination.Pagination;\r\n";
 		context += "import " + table.getPackageName() + ".bean." + table.getTableNameTransfer() + ";\r\n\r\n\r\n";

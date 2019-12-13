@@ -103,7 +103,7 @@ public class MyBatisGenerator extends AbstractGenerator
 
 	private String getQueryPage(TablePojo table)
 	{
-		String context = "<select id=\"queryPage\" resultMap=\"BaseResultMap\" parameterType=\"com.honghu.cloud.common.utils.mybatis.Criteria\"> \r\n";
+		String context = "<select id=\"queryPage\" resultMap=\"BaseResultMap\" parameterType=\"com.xiongyc.utils.mybatis.Criteria\"> \r\n";
 
 		context += "\tselect \r\n";
 		context += "\t<include refid=\"Base_Column_List\" />\r\n";
@@ -121,7 +121,7 @@ public class MyBatisGenerator extends AbstractGenerator
 
 	private String getQueryPageCount(TablePojo table)
 	{
-		String context = "<select id=\"queryPageCount\" resultType=\"java.lang.Integer\" parameterType=\"com.honghu.cloud.common.utils.mybatis.Criteria\"> \r\n";
+		String context = "<select id=\"queryPageCount\" resultType=\"java.lang.Integer\" parameterType=\"com.xiongyc.utils.mybatis.Criteria\"> \r\n";
 		context += "\tselect count(1) from " + table.getTableName() + " \r\n";
 		context += "\t<if test=\"params != null\"> \r\n";
 		context += "\t\t<include refid=\"Criteria_Where_Clause\" /> \r\n";
@@ -247,7 +247,7 @@ public class MyBatisGenerator extends AbstractGenerator
 	
 	private String getUpdateByCriteria(TablePojo table)
 	{
-		String context = "<update id=\"updateByCriteria\" parameterType=\"com.honghu.cloud.common.utils.mybatis.Criteria\">\r\n";
+		String context = "<update id=\"updateByCriteria\" parameterType=\"com.xiongyc.utils.mybatis.Criteria\">\r\n";
 		context += "\tupdate " + table.getTableName() + "\r\n";
 		context += "\t<set>\r\n";
 
@@ -308,7 +308,7 @@ public class MyBatisGenerator extends AbstractGenerator
 	
 	private String getDeleteByCriteria(TablePojo table)
 	{
-		String context = "<delete id=\"deleteByCriteria\" parameterType=\"com.honghu.cloud.common.utils.mybatis.Criteria\">\r\n";
+		String context = "<delete id=\"deleteByCriteria\" parameterType=\"com.xiongyc.utils.mybatis.Criteria\">\r\n";
 		context += "\tdelete from " + table.getTableName() + "\r\n";
 		context += "\t<if test=\"params != null\">\r\n";
 		context += "\t\t<include refid=\"Criteria_Where_Clause\" />\r\n";

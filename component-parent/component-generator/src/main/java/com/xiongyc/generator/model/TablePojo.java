@@ -21,7 +21,7 @@ public class TablePojo
 
 		classStr += "\r\n";
 		classStr += "import org.apache.commons.lang3.builder.ReflectionToStringBuilder;\r\n";
-		classStr += "import com.honghu.cloud.common.utils.mybatis.IModel;\r\n";
+		classStr += "import com.xiongyc.utils.mybatis.IModel;\r\n";
 		classStr += "import com.fasterxml.jackson.annotation.JsonFormat;\r\n";
 		classStr += "import java.math.BigDecimal;\r\n";
 		classStr += "import io.swagger.annotations.ApiModel;\r\n";

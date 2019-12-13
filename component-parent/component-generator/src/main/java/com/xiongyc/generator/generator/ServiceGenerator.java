@@ -33,7 +33,7 @@ public class ServiceGenerator extends AbstractGenerator
 		context += "\r\n\r\n";
 		context += "import java.util.List;\r\n";
 		//context += "import java.util.Map;\r\n";
-		context += "import com.honghu.cloud.common.utils.mybatis.Criteria;\r\n";
+		context += "import com.xiongyc.utils.mybatis.Criteria;\r\n";
 		context += "import com.baomidou.mybatisplus.plugins.Page;\r\n";
 		//context += "import com.hjzx.common.constant.MessageConstant;\r\n";
 		//context += "import com.hjzx.framework.service.IMessageService;\r\n";
@@ -142,7 +142,7 @@ public class ServiceGenerator extends AbstractGenerator
 		context += "import org.springframework.stereotype.Service;\r\n";
 		context += "import org.springframework.transaction.annotation.Transactional;\r\n";
 		
-		context += "import com.honghu.cloud.common.utils.mybatis.Criteria;\r\n";
+		context += "import com.xiongyc.utils.mybatis.Criteria;\r\n";
 		context += "import com.honghu.cloud.common.code.AppResponseCode;\r\n";
 		context += "import " + table.getPackageName() + ".bean." + table.getTableNameTransfer() + ";\r\n";
 		context += "import " + table.getPackageName() + ".service.I" + table.getTableNameTransfer() + "Service;\r\n\r\n\r\n";
@@ -180,7 +180,7 @@ public class ServiceGenerator extends AbstractGenerator
 		context += "  public String insert(" + table.getTableNameTransfer() + " record){\r\n";
 		context += "    int result = " + table.getTableNameTransferInitialLowcase() + "Dao.insert(record);\r\n";
 		context += "    if ( result != 1) { \r\n";
-		context += "      return AppResponseCode.RESPONSE_CODE_USER_INSERT_FALSE.getMessage();";
+		context += "      return AppResponseCode.RESPONSE_CODE_INSERT_FALSE.getMessage();";
 		context += "    } \r\n";
 		context += "    return null;\r\n";
 		context += "  }\r\n\r\n";
@@ -189,7 +189,7 @@ public class ServiceGenerator extends AbstractGenerator
 		context += "  public String insertBatch(List<" + table.getTableNameTransfer() + "> list){\r\n";
 		context += "    int result = " + table.getTableNameTransferInitialLowcase() + "Dao.insertBatch(list);\r\n";
 		context += "    if ( result != list.size()) { \r\n";
-		context += "      return AppResponseCode.RESPONSE_CODE_USER_INSERT_FALSE.getMessage();";
+		context += "      return AppResponseCode.RESPONSE_CODE_INSERT_FALSE.getMessage();";
 		context += "    } \r\n";
 		context += "    return null;\r\n";
 		context += "  }\r\n\r\n";
@@ -216,7 +216,7 @@ public class ServiceGenerator extends AbstractGenerator
 		context += "  public String insertOrUpdateBatch(List<" + table.getTableNameTransfer() + "> list){\r\n";
 		context += "    int result = " + table.getTableNameTransferInitialLowcase() + "Dao.insertOrUpdateBatch(list);\r\n";
 		context += "    if ( result != list.size()) { \r\n";
-		context += "      return AppResponseCode.RESPONSE_CODE_USER_INSERT_FALSE.getMessage();";
+		context += "      return AppResponseCode.RESPONSE_CODE_INSERT_FALSE.getMessage();";
 		context += "    } \r\n";
 		context += "    return null;\r\n";
 		context += "  }\r\n\r\n";
