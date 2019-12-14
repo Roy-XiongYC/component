@@ -27,6 +27,7 @@ public class WebPageGenerator extends AbstractGenerator
 		return false;
 	}
 
+	@SuppressWarnings("unused")
 	private String generateListPage(TablePojo table)
 	{
 		String filePath = getExportPathWithPackage("/jsp/" + table.getPackageName() + "/");
@@ -51,6 +52,7 @@ public class WebPageGenerator extends AbstractGenerator
 
 	}
 
+	@SuppressWarnings("unused")
 	private String generateDetailPage(TablePojo table)
 	{
 
