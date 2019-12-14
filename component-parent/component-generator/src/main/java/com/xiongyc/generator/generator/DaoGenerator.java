@@ -35,26 +35,33 @@ public class DaoGenerator extends AbstractGenerator
 		context += "import java.util.List;\r\n";
 		context += "import com.xiongyc.utils.mybatis.Criteria;\r\n";
 		context += "import org.springframework.stereotype.Repository;\r\n";
-		context += "import com.baomidou.mybatisplus.plugins.pagination.Pagination;\r\n";
+		context += "import com.xiongyc.utils.mybatis.MyDao;\r\n";
 		context += "import " + table.getPackageName() + ".bean." + table.getTableNameTransfer() + ";\r\n\r\n\r\n";
 
 		context += "@Repository\r\n";
 		
-		context += "public interface I" + table.getTableNameTransfer() + "Dao{\r\n\r\n";
+		context += "public interface I" + table.getTableNameTransfer() + "Dao extends MyDao<"+ table.getTableNameTransfer() +">{\r\n\r\n";
 
 		context += "\t/**\r\n";
 		context += "\t* 查询集合 \r\n";
 		context += "\t* @param param\r\n";
 		context += "\t* @return\r\n";
 		context += "\t*/\r\n";
-		context += "\tList<" + table.getTableNameTransfer() + "> queryPage(Pagination page , Criteria<" + table.getTableNameTransfer() + "> param);\r\n\r\n";
+		context += "\tList<" + table.getTableNameTransfer() + "> queryPage(Criteria<" + table.getTableNameTransfer() + "> param);\r\n\r\n";
 
+		context += "\t/**\r\n";
+		context += "\t* 查询集合 \r\n";
+		context += "\t* @param param\r\n";
+		context += "\t* @return\r\n";
+		context += "\t*/\r\n";
+		context += "\tList<" + table.getTableNameTransfer() + "> queryList(Criteria<" + table.getTableNameTransfer() + "> param);\r\n\r\n";
+		
 		context += "\t/**\r\n";
 		context += "\t* 查询集合总记录数 \r\n";
 		context += "\t* @param param\r\n";
 		context += "\t* @return\r\n";
 		context += "\t*/\r\n";
-		context += "\tInteger queryPageCount(Pagination page , Criteria<" + table.getTableNameTransfer() + "> param);\r\n\r\n";
+		context += "\tInteger queryPageCount(Criteria<" + table.getTableNameTransfer() + "> param);\r\n\r\n";
 
 		context += "\t/**\r\n";
 		context += "\t* 查询实体 \r\n";
@@ -68,7 +75,7 @@ public class DaoGenerator extends AbstractGenerator
 		context += "\t* @param record\r\n";
 		context += "\t* @return\r\n";
 		context += "\t*/\r\n";
-		context += "\tInteger insert(" + table.getTableNameTransfer() + " record);\r\n\r\n";
+		context += "\tint insert(" + table.getTableNameTransfer() + " record);\r\n\r\n";
 
 		context += "\t/**\r\n";
 		context += "\t* 批量新增实体 \r\n";
@@ -130,6 +137,7 @@ public class DaoGenerator extends AbstractGenerator
 		return true;
 	}
 
+	@SuppressWarnings("unused")
 	private boolean generateImpl(TablePojo table)
 	{
 		String filePath = getExportPathWithPackage("/dao/impl/");

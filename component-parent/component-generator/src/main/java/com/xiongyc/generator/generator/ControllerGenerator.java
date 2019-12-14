@@ -29,6 +29,7 @@ public class ControllerGenerator extends AbstractGenerator
 		context += "import java.util.List;\r\n";
 //		context += "import java.util.Map;\r\n";
 		context += "import com.alibaba.druid.util.StringUtils;\r\n";
+		context += "import com.github.pagehelper.PageInfo;\r\n";
 		context += "import org.springframework.beans.factory.annotation.Autowired;\r\n";
 		context += "import org.springframework.web.bind.annotation.DeleteMapping;\r\n";
 		context += "import org.springframework.web.bind.annotation.GetMapping;\r\n";
@@ -49,7 +50,6 @@ public class ControllerGenerator extends AbstractGenerator
 		context += "import com.xiongyc.sequence.service.SequenceService;\r\n";
 		context += "import io.swagger.annotations.ApiOperation;\r\n";
 		context += "import io.swagger.annotations.ApiParam;\r\n";
-		context += "import com.baomidou.mybatisplus.plugins.Page;\r\n";
 		context += "import com.xiongyc.utils.code.AppResponseCode;\r\n";
 		
 		context += "\r\n";
@@ -182,18 +182,18 @@ public class ControllerGenerator extends AbstractGenerator
 		 */
 		String context = "  @ApiOperation(value = \"翻页查询列表\")\r\n";
 		context += "  @GetMapping(\"/queryPage\")\r\n";
-		context += "  public JsonResult<Page<"+ table.getTableNameTransfer() +">> queryPage(@ApiParam(name = \"currentPage\", value = \"页码\") @RequestParam(name = \"currentPage\", required = false, defaultValue = \"1\") Integer currentPage,\r\n" + 
+		context += "  public JsonResult<PageInfo<"+ table.getTableNameTransfer() +">> queryPage(@ApiParam(name = \"pageNum\", value = \"页码\") @RequestParam(name = \"pageNum\", required = false, defaultValue = \"1\") Integer pageNum,\r\n" + 
 				"			@ApiParam(name = \"pageSize\", value = \"页面大小\") @RequestParam(name = \"pageSize\", required = false, defaultValue = \"10\") Integer pageSize,\r\n" + 
 				"			@ApiParam(name = \"id\", value = \"主键ID\") @RequestParam(required = false) String id){ ";
-		context += "     Criteria<" + table.getTableNameTransfer() + "> param = new Criteria<" + table.getTableNameTransfer() + ">();\r\n";
+		context += "     Criteria<" + table.getTableNameTransfer() + "> param = new Criteria<" + table.getTableNameTransfer() + ">(pageNum,pageSize);\r\n";
 		
-		context += "	  Page<" + table.getTableNameTransfer() + "> page = new Page<" + table.getTableNameTransfer() + ">(currentPage, pageSize);\r\n\r\n\r\n";
+//		context += "	  Page<" + table.getTableNameTransfer() + "> page = new Page<" + table.getTableNameTransfer() + ">(pageNum, pageSize);\r\n\r\n\r\n";
 		//context += "     page.setAsc(true); \r\n\r\n\r\n";
 		context += "     if (!StringUtils.isEmpty(id)) {\r\n";
 		context += "        param.addParam(\"" + table.getColumns().get(0).getColumnNameTransfer() + "\",id);\r\n";
 		context += "     }\r\n"; 
 		context += "     param.setOrderBy(\""+table.getColumns().get(0).getColumnName()+" desc\");\r\n"; 
-		context += "     return AppResponseCode.success("+table.getTableNameTransferInitialLowcase()+"Service.queryPage(page,param)); \r\n";
+		context += "     return AppResponseCode.success("+table.getTableNameTransferInitialLowcase()+"Service.queryPage(param)); \r\n";
 
 		context += "  }\r\n";
 

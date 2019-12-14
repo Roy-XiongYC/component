@@ -31,6 +31,7 @@ public class MyBatisGenerator extends AbstractGenerator
 		context += getCriteriaWhereClause(table);
 		context += getBaseColumnList(table);
 		context += getQueryPage(table);
+		context += getQueryList(table);
 		context += getQueryPageCount(table);
 		context += getQueryEntity(table);
 		context += getInsert(table);
@@ -119,6 +120,24 @@ public class MyBatisGenerator extends AbstractGenerator
 		return context;
 	}
 
+	private String getQueryList(TablePojo table)
+	{
+		String context = "<select id=\"queryList\" resultMap=\"BaseResultMap\" parameterType=\"com.xiongyc.utils.mybatis.Criteria\"> \r\n";
+
+		context += "\tselect \r\n";
+		context += "\t<include refid=\"Base_Column_List\" />\r\n";
+		context += "\tfrom " + table.getTableName() + "\r\n";
+		context += "\t<if test=\"params != null\"> \r\n";
+		context += "\t\t<include refid=\"Criteria_Where_Clause\" /> \r\n";
+		context += "\t</if> \r\n";
+		context += "\t<if test=\"orderBy!=null\"> \r\n";
+		context += "\t\torder by ${orderBy} \r\n";
+		context += "\t</if> \r\n";
+		context += "</select> \r\n";
+
+		return context;
+	}
+	
 	private String getQueryPageCount(TablePojo table)
 	{
 		String context = "<select id=\"queryPageCount\" resultType=\"java.lang.Integer\" parameterType=\"com.xiongyc.utils.mybatis.Criteria\"> \r\n";

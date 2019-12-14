@@ -34,9 +34,7 @@ public class ServiceGenerator extends AbstractGenerator
 		context += "import java.util.List;\r\n";
 		//context += "import java.util.Map;\r\n";
 		context += "import com.xiongyc.utils.mybatis.Criteria;\r\n";
-		context += "import com.baomidou.mybatisplus.plugins.Page;\r\n";
-		//context += "import com.hjzx.common.constant.MessageConstant;\r\n";
-		//context += "import com.hjzx.framework.service.IMessageService;\r\n";
+		context += "import com.github.pagehelper.PageInfo;\r\n";
 		context += "import " + table.getPackageName() + ".bean." + table.getTableNameTransfer() + ";\r\n\r\n\r\n";
 
 		context += "public interface I" + table.getTableNameTransfer() + "Service{\r\n\r\n";
@@ -46,14 +44,21 @@ public class ServiceGenerator extends AbstractGenerator
 		context += "* @param param\r\n";
 		context += "* @return\r\n";
 		context += "*/\r\n";
-		context += "Page<"+ table.getTableNameTransfer() +"> queryPage(Page<" + table.getTableNameTransfer() + "> page , Criteria<" + table.getTableNameTransfer() + "> param);\r\n\r\n";
+		context += "PageInfo<"+ table.getTableNameTransfer() +"> queryPage(Criteria<" + table.getTableNameTransfer() + "> param);\r\n\r\n";
 
+		context += "/**\r\n";
+		context += "* 查询集合 \r\n";
+		context += "* @param param\r\n";
+		context += "* @return\r\n";
+		context += "*/\r\n";
+		context += "List<"+ table.getTableNameTransfer() +"> queryList(Criteria<" + table.getTableNameTransfer() + "> param);\r\n\r\n";
+		
 		context += "/**\r\n";
 		context += "* 查询集合总记录数 \r\n";
 		context += "* @param param\r\n";
 		context += "* @return\r\n";
 		context += "*/\r\n";
-		context += "Integer queryPageCount(Page<" + table.getTableNameTransfer() + "> page , Criteria<" + table.getTableNameTransfer() + "> param);\r\n\r\n";
+		context += "Integer queryPageCount(Criteria<" + table.getTableNameTransfer() + "> param);\r\n\r\n";
 
 		context += "/**\r\n";
 		context += "* 查询实体 \r\n";
@@ -137,13 +142,14 @@ public class ServiceGenerator extends AbstractGenerator
 		context += "\r\n\r\n";
 		context += "import java.util.List;\r\n";
 		//context += "import java.util.Map;\r\n";
-		context += "import com.baomidou.mybatisplus.plugins.Page;\r\n";
+		context += "import com.xiongyc.utils.code.AppResponseCode;\r\n";
+		context += "import com.github.pagehelper.PageInfo;\r\n";
+		context += "import com.github.pagehelper.PageHelper;\r\n";
 		context += "import org.springframework.beans.factory.annotation.Autowired;\r\n";
 		context += "import org.springframework.stereotype.Service;\r\n";
 		context += "import org.springframework.transaction.annotation.Transactional;\r\n";
 		
 		context += "import com.xiongyc.utils.mybatis.Criteria;\r\n";
-		context += "import com.honghu.cloud.common.code.AppResponseCode;\r\n";
 		context += "import " + table.getPackageName() + ".bean." + table.getTableNameTransfer() + ";\r\n";
 		context += "import " + table.getPackageName() + ".service.I" + table.getTableNameTransfer() + "Service;\r\n\r\n\r\n";
 		context += "import " + table.getPackageName() + ".dao.I" + table.getTableNameTransfer() + "Dao;\r\n\r\n\r\n";
@@ -158,17 +164,23 @@ public class ServiceGenerator extends AbstractGenerator
 		context += "public class " + table.getTableNameTransfer() + "ServiceImpl implements I" + table.getTableNameTransfer() + "Service{\r\n\r\n";
 
 		context += "@Override\r\n";
-		context += "  public Page<" + table.getTableNameTransfer() +"> queryPage(Page<" + table.getTableNameTransfer() +"> page,Criteria<" + table.getTableNameTransfer() + "> param){\r\n";
+		context += "  public PageInfo<" + table.getTableNameTransfer() +"> queryPage(Criteria<" + table.getTableNameTransfer() + "> param){\r\n";
 		//context += "    List<" + table.getTableNameTransfer() + "> list = " + table.getTableNameTransferInitialLowcase() + "Dao.queryPage(param); \r\n";
 		//context += "    List<Map<String, Object>> ret = dictService.translateToMapList(list);\r\n";
-		context += "    page.setRecords( " + table.getTableNameTransferInitialLowcase() + "Dao.queryPage(page,param));\r\n";
-		context += "    return page;\r\n";
+//		context += "    page.setRecords( " + table.getTableNameTransferInitialLowcase() + "Dao.queryPage(page,param));\r\n";
+//		context += "    return page;\r\n";
+		context += "    PageHelper.startPage(param.getPageNum(), param.getPageSize());\r\n";
+		context += "    return  new PageInfo<" + table.getTableNameTransfer() +">( " + table.getTableNameTransferInitialLowcase() + "Dao.queryPage(param));\r\n";
 		//context += "    return ret;";
 		context += "  }\r\n\r\n";
 
+		context += "  public List<" + table.getTableNameTransfer() +"> queryList(Criteria<" + table.getTableNameTransfer() + "> param){\r\n";
+		context += "    return  " + table.getTableNameTransferInitialLowcase() + "Dao.queryList(param);\r\n";
+		context += "  }\r\n\r\n";
+		
 		context += "@Override\r\n";
-		context += "  public Integer queryPageCount(Page<" + table.getTableNameTransfer() +"> page,Criteria<" + table.getTableNameTransfer() + "> param){\r\n";
-		context += "    return (Integer) " + table.getTableNameTransferInitialLowcase() + "Dao.queryPageCount(page,param);\r\n";
+		context += "  public Integer queryPageCount(Criteria<" + table.getTableNameTransfer() + "> param){\r\n";
+		context += "    return (Integer) " + table.getTableNameTransferInitialLowcase() + "Dao.queryPageCount(param);\r\n";
 		context += "  }\r\n\r\n";
 
 		context += "@Override\r\n";
@@ -198,7 +210,7 @@ public class ServiceGenerator extends AbstractGenerator
 		context += "  public String updateByCriteria(Criteria<" + table.getTableNameTransfer() + "> param){\r\n";
 		context += "    int result = " + table.getTableNameTransferInitialLowcase() + "Dao.updateByCriteria(param);\r\n";
 		context += "    if ( result != 1) { \r\n";
-		context += "      return AppResponseCode.RESPONSE_CODE_USER_UPDATE_FALSE.getMessage();";
+		context += "      return AppResponseCode.RESPONSE_CODE_UPDATE_FALSE.getMessage();";
 		context += "    } \r\n";
 		context += "    return null;\r\n";
 		context += "  }\r\n\r\n";
@@ -207,7 +219,7 @@ public class ServiceGenerator extends AbstractGenerator
 		context += "  public String updateBatchByCriteria(List<" + table.getTableNameTransfer() + "> list){\r\n";
 		context += "    int result = " + table.getTableNameTransferInitialLowcase() + "Dao.updateBatchByCriteria(list);\r\n";
 		context += "    if ( result == 0) { \r\n";
-		context += "      return AppResponseCode.RESPONSE_CODE_USER_UPDATE_FALSE.getMessage();";
+		context += "      return AppResponseCode.RESPONSE_CODE_UPDATE_FALSE.getMessage();";
 		context += "    } \r\n";
 		context += "    return null;\r\n";
 		context += "  }\r\n\r\n";
@@ -225,7 +237,7 @@ public class ServiceGenerator extends AbstractGenerator
 		context += "  public String deleteById(String id){\r\n";
 		context += "    int result = " + table.getTableNameTransferInitialLowcase() + "Dao.deleteById(id);\r\n";
 		context += "    if ( result != 1) { \r\n";
-		context += "      return AppResponseCode.RESPONSE_CODE_USER_DEL_FALSE.getMessage();";
+		context += "      return AppResponseCode.RESPONSE_CODE_DEL_FALSE.getMessage();";
 		context += "    } \r\n";
 		context += "    return null;\r\n";
 		context += "  }\r\n\r\n";
@@ -234,7 +246,7 @@ public class ServiceGenerator extends AbstractGenerator
 		context += "  public String deleteByCriteria(Criteria<" + table.getTableNameTransfer() + "> param){\r\n";
 		context += "    int result = " + table.getTableNameTransferInitialLowcase() + "Dao.deleteByCriteria(param);\r\n";
 		context += "    if ( result < 1) { \r\n";
-		context += "      return AppResponseCode.RESPONSE_CODE_USER_DEL_FALSE.getMessage();";
+		context += "      return AppResponseCode.RESPONSE_CODE_DEL_FALSE.getMessage();";
 		context += "    } \r\n";
 		context += "    return null;\r\n";
 		context += "  }\r\n\r\n";
@@ -243,7 +255,7 @@ public class ServiceGenerator extends AbstractGenerator
 		context += "  public String deleteBatchByIds(String[] ids){\r\n";
 		context += "    int result = " + table.getTableNameTransferInitialLowcase() + "Dao.deleteBatchByIds(ids);\r\n";
 		context += "    if ( result == 0) { \r\n";
-		context += "      return AppResponseCode.RESPONSE_CODE_USER_DEL_FALSE.getMessage();";
+		context += "      return AppResponseCode.RESPONSE_CODE_DEL_FALSE.getMessage();";
 		context += "    } \r\n";
 		context += "    return null;\r\n";
 		context += "  }\r\n\r\n";
