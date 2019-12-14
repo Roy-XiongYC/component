@@ -19,6 +19,7 @@
 		<module>component-sequence</module>
 		<module>component-cache</module>
 		<module>component-generator</module>
+		<module>component-security</module>
 	</modules>
 
 	<properties>
@@ -54,6 +55,41 @@
 				<groupId>commons-lang</groupId>
 				<artifactId>commons-lang</artifactId>
 				<version>${commons.lang.version}</version>
+			</dependency>
+
+			<!-- 通用公共组件（内置swagger组件） -->
+			<dependency>
+				<groupId>com.xiongyc.component</groupId>
+				<artifactId>component-util</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<!-- 安全 组件 -->
+			<dependency>
+				<groupId>com.xiongyc.component</groupId>
+				<artifactId>component-security</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<!-- swagger API 组件 -->
+			<dependency>
+				<groupId>com.xiongyc.component</groupId>
+				<artifactId>component-swagger</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<!-- 分布式主键组件（内置缓存组件） -->
+			<dependency>
+				<groupId>com.xiongyc.component</groupId>
+				<artifactId>component-sequence</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<!-- 缓存组件 -->
+			<dependency>
+				<groupId>com.xiongyc.component</groupId>
+				<artifactId>component-cache</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
@@ -96,34 +132,6 @@
 				<groupId>io.springfox</groupId>
 				<artifactId>springfox-swagger-ui</artifactId>
 				<version>${io.springfox.version}</version>
-			</dependency>
-
-			<!-- 通用公共组件（内置swagger组件） -->
-			<dependency>
-				<groupId>com.xiongyc.component</groupId>
-				<artifactId>component-util</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-
-			<!-- swagger API 组件 -->
-			<dependency>
-				<groupId>com.xiongyc.component</groupId>
-				<artifactId>component-swagger</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-
-			<!-- 分布式主键组件（内置缓存组件） -->
-			<dependency>
-				<groupId>com.xiongyc.component</groupId>
-				<artifactId>component-sequence</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-
-			<!-- 缓存组件 -->
-			<dependency>
-				<groupId>com.xiongyc.component</groupId>
-				<artifactId>component-cache</artifactId>
-				<version>${project.version}</version>
 			</dependency>
 
 			<!-- 代码生成组件 -->
