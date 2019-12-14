@@ -30,7 +30,7 @@ public class SequenceServiceImpl implements SequenceService {
 			Long seq = redisUtil.getSeq(tableName, 1l);
 			journalCode = prefix + DateUtil.formatDate(Calendar.getInstance().getTime(), DateUtil.FORMAT_DATE_YYYYMMDD) + SequenceUtil.addLeftZero(seq + "", 9);
 		} catch (Exception e) {
-			throw e;
+			throw new RuntimeException("获取redis 分布式主键失败 MSG :" + e.getMessage());
 		}
 		return journalCode;
 	}
@@ -42,7 +42,7 @@ public class SequenceServiceImpl implements SequenceService {
 			Long seq = redisUtil.getSeq(tableName, 1l);
 			journalCode = prefix + DateUtil.formatDate(Calendar.getInstance().getTime(), DateUtil.FORMAT_DATE_YYYYMMDD) + SequenceUtil.addLeftZero(seq + "", suffixLength);
 		} catch (Exception e) {
-			throw e;
+			throw new RuntimeException("获取redis 分布式主键失败 MSG :" + e.getMessage());
 		}
 		return journalCode;
 	}
