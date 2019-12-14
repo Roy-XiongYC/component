@@ -5,6 +5,15 @@ import java.util.Map;
 
 public class Criteria<T extends IModel> {
 
+	public Criteria(Integer pageNum, Integer pageSize) {
+		setPageNum(pageNum);
+		setPageSize(pageSize);
+	}
+
+	public Criteria() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Criteria<T> initParams() {
 		this.params = new HashMap<String, Object>();
 		return this;
@@ -46,25 +55,24 @@ public class Criteria<T extends IModel> {
 		this.orderBy = orderBy;
 	}
 //
-//	public Integer getPageSize() {
-//		return pageSize;
-//	}
-//
-//	public Criteria<T> setPageSize(Integer pageSize) {
-//		this.pageSize = pageSize;
-//
-//		return this;
-//	}
-//
-//	public Integer getStartIndex() {
-//		return startIndex;
-//	} 
-//
-//	public Criteria<T> setStartIndex(Integer startIndex) {
-//		this.startIndex = startIndex;
-//
-//		return this;
-//	}
+	public Integer getPageSize() {
+		return pageSize;
+	}
+
+	public Criteria<T> setPageSize(Integer pageSize) {
+		this.pageSize = pageSize;
+
+		return this;
+	}
+
+	public Integer getPageNum() {
+		return pageNum;
+	} 
+
+	public Criteria<T> setPageNum(Integer pageNum) {
+		this.pageNum = pageNum;
+		return this;
+	}
 
 	private T record;
 
@@ -72,9 +80,10 @@ public class Criteria<T extends IModel> {
 
 	private Map<String, Object> params; 
 
-//	private Integer pageSize = 30; 
-//
-//	private Integer startIndex = 0;
+	private Integer pageSize = 30; 
+
+	private Integer pageNum = 0;
+	
 	
 	public String toString() {
 		return this.getClass().getName() + " params=" + params + " record=" + record;

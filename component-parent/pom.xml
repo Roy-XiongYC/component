@@ -45,6 +45,23 @@
 				<version>2.6</version>
 			</dependency>
 
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>8.0.18</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid</artifactId>
+				<version>1.1.12</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis.spring.boot</groupId>
+				<artifactId>mybatis-spring-boot-starter</artifactId>
+				<version>2.1.1</version>
+			</dependency>
+
 			<!-- swagger ui -->
 			<dependency>
 				<groupId>io.springfox</groupId>
@@ -63,28 +80,28 @@
 				<artifactId>component-util</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-			
+
 			<!-- swagger API 组件 -->
 			<dependency>
 				<groupId>com.xiongyc.component</groupId>
 				<artifactId>component-swagger</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-			
+
 			<!-- 分布式主键组件（内置缓存组件） -->
 			<dependency>
 				<groupId>com.xiongyc.component</groupId>
 				<artifactId>component-sequence</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-			
+
 			<!-- 缓存组件 -->
 			<dependency>
 				<groupId>com.xiongyc.component</groupId>
 				<artifactId>component-cache</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-			
+
 			<!-- 代码生成组件 -->
 			<dependency>
 				<groupId>com.xiongyc.component</groupId>
