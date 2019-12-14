@@ -3,6 +3,13 @@ package com.xiongyc.utils.mybatis;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 
+ * @author YouCai.Xiong
+ * @Date 2019年12月14日 - 下午10:48:32
+ * @Info 初始版本  封装入参对象
+ * @Version 1.0
+ */
 public class Criteria<T extends IModel> {
 
 	public Criteria(Integer pageNum, Integer pageSize) {
