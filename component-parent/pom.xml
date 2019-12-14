@@ -11,11 +11,7 @@
 
 	<name>component-parent</name>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<io.springfox.version>2.6.1</io.springfox.version>
-	</properties>
-
+	<description>this is common componet</description>
 
 	<modules>
 		<module>component-swagger</module>
@@ -25,42 +21,69 @@
 		<module>component-generator</module>
 	</modules>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<io.springfox.version>2.6.1</io.springfox.version>
+		<junit.version>3.8.1</junit.version>
+		<redis.version>2.2.2.RELEASE</redis.version>
+		<commons.lang.version>2.6</commons.lang.version>
+		<mysql.version>8.0.18</mysql.version>
+		<druid.version>1.1.12</druid.version>
+		<mybatis.version>2.1.1</mybatis.version>
+		<mapper.version>1.2.4</mapper.version>
+		<pagehelper.version>1.2.3</pagehelper.version>
+	</properties>
+
 	<dependencyManagement>
 
 		<dependencies>
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
-				<version>3.8.1</version>
+				<version>${junit.version}</version>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-data-redis</artifactId>
-				<version>2.2.2.RELEASE</version>
+				<version>${redis.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>commons-lang</groupId>
 				<artifactId>commons-lang</artifactId>
-				<version>2.6</version>
+				<version>${commons.lang.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
-				<version>8.0.18</version>
+				<version>${mysql.version}</version>
 			</dependency>
 
+			<!-- 数据库链接 配套pagehelper -->
 			<dependency>
 				<groupId>com.alibaba</groupId>
 				<artifactId>druid</artifactId>
-				<version>1.1.12</version>
+				<version>${druid.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.mybatis.spring.boot</groupId>
 				<artifactId>mybatis-spring-boot-starter</artifactId>
-				<version>2.1.1</version>
+				<version>${mybatis.version}</version>
+			</dependency>
+			<!--mapper -->
+			<dependency>
+				<groupId>tk.mybatis</groupId>
+				<artifactId>mapper-spring-boot-starter</artifactId>
+				<version>${mapper.version}</version>
+			</dependency>
+			<!--pagehelper -->
+			<dependency>
+				<groupId>com.github.pagehelper</groupId>
+				<artifactId>pagehelper-spring-boot-starter</artifactId>
+				<version>${pagehelper.version}</version>
 			</dependency>
 
 			<!-- swagger ui -->
@@ -109,7 +132,6 @@
 				<artifactId>component-generator</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-
 
 		</dependencies>
 	</dependencyManagement>
