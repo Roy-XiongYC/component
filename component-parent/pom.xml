@@ -26,6 +26,7 @@
 	</modules>
 
 	<dependencyManagement>
+
 		<dependencies>
 			<dependency>
 				<groupId>junit</groupId>
@@ -108,6 +109,36 @@
 				<artifactId>component-generator</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+
+
 		</dependencies>
 	</dependencyManagement>
+
+	<distributionManagement>
+		<repository>
+			<id>nexus-releases</id>
+			<name>SX Releases</name>
+			<url>http://172.1.1.167:8081/repository/maven-snapshots/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<name>SX Snapshot</name>
+			<url>http://172.1.1.167:8081/repository/maven-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 </project>
