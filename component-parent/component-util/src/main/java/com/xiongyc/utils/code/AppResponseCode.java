@@ -11,13 +11,15 @@ import com.xiongyc.utils.result.JsonResult;
  */
 public enum AppResponseCode {
 
+	C00020("C00020", "找不到指定的用户"),
+	
 //	RESPONSE_RETURN_SYSTEM_FEIGN_ERROR("404", "网络异常"), 
 	RESPONSE_RETURN_CODE_SUCCESS("200", "请求成功、结果处理成功"),
 	RESPONSE_CODE_FAILURE("10000", "请求失败、结果处理失败"), 
 	RESPONSE_CODE_DEL_FALSE("10001", "删除失败"),
 	RESPONSE_CODE_UPDATE_FALSE("10002", "更新失败"), 
 	RESPONSE_CODE_INSERT_FALSE("10003", "保存失败");
-
+	
 	// 状态码
 	private String code;
 	// 返回消息
@@ -61,6 +63,14 @@ public enum AppResponseCode {
 		return result;
 	}
 
+	private static <T> JsonResult<T> buildResponseMsg(String msg) {
+		JsonResult<T> result = new JsonResult<T>();
+		result.setCode(AppResponseCode.RESPONSE_CODE_FAILURE.getCode());
+		result.setMessage(msg);
+		result.setData(null);
+		return result;
+	}
+	
 	public static <T> JsonResult<T> success(AppResponseCode appResponseCode, T data) {
 		return buildResponseMsg(appResponseCode, data);
 	}
@@ -83,6 +93,10 @@ public enum AppResponseCode {
 
 	public static <T> JsonResult<T> failure(AppResponseCode appResponseCode, T data) {
 		return buildResponseMsg(appResponseCode, data);
+	}
+
+	public static JsonResult<Object> fail(String msg) {
+		return buildResponseMsg(msg);
 	}
 
 }
