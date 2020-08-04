@@ -12,13 +12,14 @@ import com.xiongyc.utils.result.JsonResult;
 public enum AppResponseCode {
 
 	C00020("C00020", "找不到指定的用户"),
-	
+	RESPONSE_CODE_SYSTEM_ERROR("10004", "系统内部异常!"),
 //	RESPONSE_RETURN_SYSTEM_FEIGN_ERROR("404", "网络异常"), 
 	RESPONSE_RETURN_CODE_SUCCESS("200", "请求成功、结果处理成功"),
 	RESPONSE_CODE_FAILURE("10000", "请求失败、结果处理失败"), 
 	RESPONSE_CODE_DEL_FALSE("10001", "删除失败"),
 	RESPONSE_CODE_UPDATE_FALSE("10002", "更新失败"), 
-	RESPONSE_CODE_INSERT_FALSE("10003", "保存失败");
+	RESPONSE_CODE_INSERT_FALSE("10003", "保存失败"), 
+	RESPONSE_CODE_PARAM_ERROR("10005", "缺少必填参数!");
 	
 	// 状态码
 	private String code;
