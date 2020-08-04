@@ -28,4 +28,8 @@ public class RedisUtil {
 	public Object get(String key) {
 		return redisTemplate.opsForValue().get(key);
 	}
+
+	public boolean exists(String key) {
+		return redisTemplate.hasKey(key);
+	}
 }
